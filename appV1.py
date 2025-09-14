@@ -33,6 +33,32 @@ from dataclasses import dataclass, field
 from functools import lru_cache, wraps
 from enum import Enum
 
+# Function to install required packages
+def install_dependencies():
+    """
+    Installe automatiquement les dépendances nécessaires si elles ne sont pas présentes
+    """
+    import subprocess
+    import sys
+    
+    required_packages = ['streamlit', 'moviepy', 'imageio-ffmpeg']
+    
+    def is_package_installed(package_name):
+        try:
+            __import__(package_name)
+            return True
+        except ImportError:
+            return False
+    
+    for package in required_packages:
+        if not is_package_installed(package):
+            print(f"Installation de {package}...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+            print(f"{package} a été installé avec succès.")
+
+# Installation automatique des dépendances
+install_dependencies()
+
 # Import external dependencies with graceful fallbacks for missing packages
 try:
     import streamlit as st
@@ -2601,7 +2627,7 @@ def main():
             <div class="footer">
                 <h3>🏆 SLOWKATHON — Creative Multilingual Translator</h3>
                 <p><span class="language-diversity">Celebrating Linguistic Diversity</span> • Cultural Expression • Creative Technology</p>
-                <p><strong>Developed for Circle U. Alliance — European Day of Languages 2025</strong></p>
+                <p><strong>Developed for Circle U. Alliance — European Day of Languages 2025 by Yanis PISON</strong></p>
                 <div style="margin-top: 1rem; font-size: 1.2rem;">
                     <span class="snail-emoji">🐌</span>
                     <span style="margin: 0 1rem;">•</span>

@@ -1,1 +1,6 @@
-
+streamlit>=1.49.0
+moviepy>=2.2.0
+imageio-ffmpeg>=0.6.0
+numpy>=1.23.0
+pillow>=9.2.0
+python-dotenv>=0.10

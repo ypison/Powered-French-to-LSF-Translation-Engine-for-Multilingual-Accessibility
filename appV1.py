@@ -1859,7 +1859,7 @@ def render_custom_css():
 
     /* Translation output styling */
     .translation-output {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        background: var(--background-color, linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%));
         border: 3px solid #667eea;
         border-radius: 15px;
         padding: 1.5rem;
@@ -1868,6 +1868,20 @@ def render_custom_css():
         font-size: 1.1em;
         box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
         position: relative;
+        color: var(--text-color, #000000);
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        .translation-output {
+            --background-color: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+            --text-color: #ffffff;
+        }
+    }
+    
+    [data-theme="dark"] .translation-output {
+        --background-color: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+        --text-color: #ffffff;
     }
 
     .translation-output::before {
